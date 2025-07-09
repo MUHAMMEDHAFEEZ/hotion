@@ -101,7 +101,7 @@ export default function SignUpPage() {
   }
 
   return (
-    <div className="auth-form min-h-screen bg-gradient-to-br from-orange-50 via-white to-orange-100 flex items-center justify-center p-4">
+    <div className="auth-form min-h-screen bg-gradient-to-br from-color-white via-color-orange-50 to-border-blue-light flex items-center justify-center p-4">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -109,18 +109,18 @@ export default function SignUpPage() {
         className="w-full max-w-md"
       >
         {/* Back to home */}
-        <Link href="/" className="inline-flex items-center text-orange-600 hover:text-orange-900 mb-8 transition-colors">
+        <Link href="/" className="inline-flex items-center text-text-gray-darker hover:text-color-blue-primary mb-8 transition-colors">
           <ArrowLeft className="w-4 h-4 mr-2" />
-          <span className="text-orange-700 font-medium">Back to home</span>
+          <span className="text-text-gray-darker font-medium">Back to home</span>
         </Link>
 
         {/* Logo */}
         <div className="text-center mb-8">
-          <div className="w-12 h-12 bg-gradient-to-r from-orange-500 to-orange-600 rounded-xl flex items-center justify-center mx-auto mb-4">
+          <div className="w-12 h-12 bg-gradient-to-r from-color-blue-primary to-text-blue-dark rounded-xl flex items-center justify-center mx-auto mb-4">
             <span className="text-white font-bold text-xl">H</span>
           </div>
-          <h1 className="text-2xl font-bold text-orange-900">Create your account</h1>
-          <p className="text-orange-700 mt-2 font-medium">Join Hotion and start organizing your thoughts</p>
+          <h1 className="text-2xl font-bold text-text-black-light">Create your account</h1>
+          <p className="text-text-gray-darker mt-2 font-medium">Join Hotion and start organizing your thoughts</p>
         </div>
 
         {/* Sign Up Form */}

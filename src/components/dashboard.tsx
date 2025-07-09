@@ -97,7 +97,7 @@ export function Dashboard() {
       <div>
         <div
           className={cn(
-            "flex items-center justify-between px-2 py-1.5 rounded-md cursor-pointer hover:bg-orange-100 dark:hover:bg-gray-700 transition-colors",
+            "flex items-center justify-between px-2 py-1.5 rounded-md cursor-pointer hover:bg-orange-50 dark:hover:bg-gray-700 transition-colors",
             level > 0 && "ml-4"
           )}
           onClick={() => {
@@ -155,10 +155,10 @@ export function Dashboard() {
             animate={{ width: 280, opacity: 1 }}
             exit={{ width: 0, opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="bg-white dark:bg-gray-800 border-r border-orange-200 dark:border-gray-700 flex flex-col overflow-hidden"
+            className="bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700 flex flex-col overflow-hidden"
           >
             {/* Sidebar Header */}
-            <div className="p-4 border-b border-orange-200 dark:border-gray-700">
+            <div className="p-4 border-b border-gray-200 dark:border-gray-700">
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-2">
                   <div className="w-8 h-8 bg-gradient-to-r from-orange-500 to-orange-600 rounded-lg flex items-center justify-center">
@@ -178,13 +178,13 @@ export function Dashboard() {
               
               {/* Search */}
               <div className="mt-4 relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-orange-400 w-4 h-4" />
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
                 <input
                   type="text"
                   placeholder="Search..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-10 pr-4 py-2 border border-orange-200 dark:border-gray-600 rounded-lg bg-orange-50 dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                  className="w-full pl-10 pr-4 py-2 border border-gray-200 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
               </div>
             </div>
@@ -200,7 +200,7 @@ export function Dashboard() {
               </div>
 
               {/* Quick Actions */}
-              <div className="pt-4 border-t border-orange-200 dark:border-gray-700">
+              <div className="pt-4 border-t border-gray-200 dark:border-gray-700">
                 <Button className="w-full justify-start" variant="ghost">
                   <Plus className="w-4 h-4 mr-2" />
                   New Page
@@ -213,7 +213,7 @@ export function Dashboard() {
             </nav>
 
             {/* Sidebar Footer */}
-            <div className="p-4 border-t border-orange-200 dark:border-gray-700">
+            <div className="p-4 border-t border-gray-200 dark:border-gray-700">
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-2">
                   <div className="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center">
@@ -236,7 +236,7 @@ export function Dashboard() {
       {/* Main Content */}
       <div className="flex-1 flex flex-col min-w-0">
         {/* Header */}
-        <header className="bg-white dark:bg-gray-800 border-b border-orange-200 dark:border-gray-700 px-6 py-4">
+        <header className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
               {!sidebarOpen && (
@@ -305,7 +305,7 @@ export function Dashboard() {
                   <motion.div
                     key={page.id}
                     whileHover={{ scale: 1.02 }}
-                    className="p-4 bg-white dark:bg-gray-800 rounded-lg border border-orange-200 dark:border-gray-700 hover:border-orange-300 dark:hover:border-orange-600 transition-colors cursor-pointer"
+                    className="p-4 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-600 transition-colors cursor-pointer"
                     onClick={() => setSelectedPage(page.id)}
                   >
                     <div className="flex items-start justify-between mb-2">

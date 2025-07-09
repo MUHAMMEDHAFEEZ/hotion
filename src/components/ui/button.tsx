@@ -11,15 +11,15 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          'bg-primary text-primary-foreground text-white hover:bg-primary/90',
+          'bg-primary text-primary-foreground hover:bg-primary-hover shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200',
         destructive:
-          'bg-destructive text-destructive-foreground text-white hover:bg-destructive/90',
+          'bg-destructive text-destructive-foreground hover:bg-destructive/90 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200',
         outline:
-          'border border-input bg-background text-gray-900 hover:bg-accent hover:text-accent-foreground',
+          'border-2 border-border-gray-light bg-background text-text-black-light hover:bg-color-orange-50 hover:text-text-black-light hover:border-color-blue-primary transition-all duration-200',
         secondary:
-          'bg-secondary text-secondary-foreground text-gray-900 hover:bg-secondary/80',
-        ghost: 'text-gray-900 hover:bg-accent hover:text-accent-foreground',
-        link: 'text-primary underline-offset-4 hover:underline',
+          'bg-secondary text-secondary-foreground hover:bg-color-gray-50 shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200',
+        ghost: 'text-text-gray-darker hover:bg-color-orange-50 hover:text-text-black-light transition-all duration-200',
+        link: 'text-primary underline-offset-4 hover:underline text-color-blue-primary hover:text-text-blue-dark transition-colors duration-200',
       },
       size: {
         default: 'h-10 px-4 py-2',
