@@ -1,0 +1,650 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222.2 84% 4.9%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96%;
+    --accent-foreground: 222.2 84% 4.9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 84% 4.9%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 94.1%;
+  }
+}
+
+@layer base {
+  * {
+    border-color: hsl(var(--border));
+  }
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+  }
+
+  /* Input field improvements */
+  input[type="email"], input[type="text"], input[type="password"] {
+    color: #111827 !important;
+    background-color: #ffffff !important;
+  }
+
+  input[type="email"]:focus, input[type="text"]:focus, input[type="password"]:focus {
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5) !important;
+    border-color: transparent !important;
+  }
+
+  input::placeholder {
+    color: #6b7280 !important;
+  }
+
+  /* Button hover effects */
+  button:hover {
+    transition: all 0.2s ease;
+  }
+
+  /* Ensure text is visible in inputs */
+  .dark input[type="email"], .dark input[type="text"], .dark input[type="password"] {
+    color: #f3f4f6 !important;
+    background-color: #374151 !important;
+    border-color: #4b5563 !important;
+  }
+
+  .dark input::placeholder {
+    color: #9ca3af !important;
+  }
+}
+
+/* Enhanced text visibility and color improvements */
+@layer base {
+  /* Global text color fixes */
+  * {
+    color: inherit;
+  }
+
+  html, body {
+    color: #111827;
+    background-color: #ffffff;
+  }
+
+  /* Force text colors for better visibility */
+  h1, h2, h3, h4, h5, h6 {
+    color: #111827 !important;
+    font-weight: 700 !important;
+  }
+
+  p, span, div:not(.bg-gradient-to-r):not(.bg-gradient-to-br):not(.prose) {
+    color: #374151 !important;
+  }
+
+  /* Sidebar and navigation text */
+  aside h1, aside h2, aside h3, aside h4, aside h5, aside h6,
+  nav h1, nav h2, nav h3, nav h4, nav h5, nav h6 {
+    color: #111827 !important;
+  }
+
+  aside p, aside span, aside div,
+  nav p, nav span, nav div {
+    color: #374151 !important;
+  }
+
+  /* Button text visibility */
+  button, .button {
+    color: inherit !important;
+  }
+
+  button:not(.bg-primary):not(.bg-destructive):not(.bg-secondary) {
+    color: #374151 !important;
+  }
+
+  /* Link visibility */
+  a {
+    color: #2563eb !important;
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: #1d4ed8 !important;
+    text-decoration: underline;
+  }
+
+  /* Input field visibility improvements */
+  input[type="email"], 
+  input[type="text"], 
+  input[type="password"],
+  textarea {
+    color: #111827 !important;
+    background-color: #ffffff !important;
+    border-color: #d1d5db !important;
+  }
+
+  input[type="email"]:focus, 
+  input[type="text"]:focus, 
+  input[type="password"]:focus,
+  textarea:focus {
+    color: #111827 !important;
+    background-color: #ffffff !important;
+    border-color: #3b82f6 !important;
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5) !important;
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    color: #6b7280 !important;
+    opacity: 1 !important;
+  }
+
+  /* Editor-specific improvements for text visibility */
+  .ProseMirror {
+    color: #111827 !important;
+    background-color: #ffffff !important;
+  }
+
+  .ProseMirror p {
+    color: #374151 !important;
+    margin: 0.75rem 0 !important;
+    line-height: 1.6 !important;
+  }
+
+  .ProseMirror h1 {
+    color: #111827 !important;
+    font-size: 2.25rem !important;
+    font-weight: 700 !important;
+    margin: 1.5rem 0 1rem 0 !important;
+    line-height: 1.2 !important;
+  }
+
+  .ProseMirror h2 {
+    color: #111827 !important;
+    font-size: 1.875rem !important;
+    font-weight: 600 !important;
+    margin: 1.25rem 0 0.75rem 0 !important;
+    line-height: 1.3 !important;
+  }
+
+  .ProseMirror h3 {
+    color: #111827 !important;
+    font-size: 1.5rem !important;
+    font-weight: 600 !important;
+    margin: 1rem 0 0.5rem 0 !important;
+    line-height: 1.4 !important;
+  }
+
+  .ProseMirror ul, .ProseMirror ol {
+    color: #374151 !important;
+    padding-left: 1.75rem !important;
+    margin: 0.75rem 0 !important;
+  }
+
+  .ProseMirror li {
+    color: #374151 !important;
+    margin: 0.5rem 0 !important;
+    line-height: 1.6 !important;
+  }
+
+  .ProseMirror blockquote {
+    color: #1f2937 !important;
+    border-left: 4px solid #3b82f6 !important;
+    background-color: #eff6ff !important;
+    padding: 1.25rem !important;
+    margin: 1.5rem 0 !important;
+    font-style: italic !important;
+    border-radius: 0.375rem !important;
+  }
+
+  .ProseMirror blockquote p {
+    color: #1f2937 !important;
+    margin: 0 !important;
+  }
+
+  /* Placeholder text for empty editor */
+  .ProseMirror p.is-editor-empty:first-child::before {
+    color: #9ca3af !important;
+    font-weight: 400 !important;
+  }
+
+  /* Ensure toolbar buttons are visible */
+  .editor-toolbar button {
+    color: #374151 !important;
+  }
+
+  .editor-toolbar button:hover {
+    color: #111827 !important;
+    background-color: #f3f4f6 !important;
+  }
+
+  .editor-toolbar button[data-state="active"] {
+    color: #ffffff !important;
+    background-color: #3b82f6 !important;
+  }
+
+  .ProseMirror code {
+    color: #dc2626 !important;
+    background-color: #f9fafb !important;
+    padding: 0.25rem 0.375rem !important;
+    border-radius: 0.25rem !important;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace !important;
+    font-size: 0.875em !important;
+    border: 1px solid #e5e7eb !important;
+  }
+
+  .ProseMirror pre {
+    background-color: #1f2937 !important;
+    color: #f9fafb !important;
+    padding: 1.25rem !important;
+    border-radius: 0.5rem !important;
+    overflow-x: auto !important;
+    margin: 1.5rem 0 !important;
+    border: 1px solid #374151 !important;
+  }
+
+  .ProseMirror pre code {
+    color: #f9fafb !important;
+    background-color: transparent !important;
+    padding: 0 !important;
+    border: none !important;
+  }
+
+  .ProseMirror strong {
+    color: #111827 !important;
+    font-weight: 700 !important;
+  }
+
+  .ProseMirror em {
+    color: #374151 !important;
+    font-style: italic !important;
+  }
+
+  /* Specific component text visibility */
+  .dashboard-container h1, .dashboard-container h2, .dashboard-container h3,
+  .landing-page h1, .landing-page h2, .landing-page h3,
+  .auth-form h1, .auth-form h2, .auth-form h3 {
+    color: #111827 !important;
+    font-weight: 700 !important;
+  }
+
+  .dashboard-container p, .dashboard-container span,
+  .landing-page p, .landing-page span,
+  .auth-form p, .auth-form span {
+    color: #374151 !important;
+  }
+
+  /* Sidebar text visibility */
+  .sidebar, .sidebar * {
+    color: #374151 !important;
+  }
+
+  .sidebar h1, .sidebar h2, .sidebar h3, .sidebar h4, .sidebar h5, .sidebar h6 {
+    color: #111827 !important;
+  }
+
+  /* Card and container text */
+  .card, .container, .max-w-4xl, .max-w-7xl {
+    color: #374151 !important;
+  }
+
+  .card h1, .card h2, .card h3, .container h1, .container h2, .container h3,
+  .max-w-4xl h1, .max-w-4xl h2, .max-w-4xl h3,
+  .max-w-7xl h1, .max-w-7xl h2, .max-w-7xl h3 {
+    color: #111827 !important;
+  }
+
+  /* Text in main content areas */
+  main, .main-content, .content {
+    color: #374151 !important;
+  }
+
+  main h1, main h2, main h3, main h4, main h5, main h6,
+  .main-content h1, .main-content h2, .main-content h3,
+  .content h1, .content h2, .content h3 {
+    color: #111827 !important;
+  }
+
+  /* Dark mode overrides */
+  .dark {
+    color: #f9fafb !important;
+    background-color: #111827 !important;
+  }
+
+  .dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {
+    color: #f9fafb !important;
+  }
+
+  .dark p, .dark span, .dark div:not(.bg-gradient-to-r):not(.bg-gradient-to-br) {
+    color: #e5e7eb !important;
+  }
+
+  /* Dropdown and menu text */
+  .dropdown-menu, .menu, [role="menu"], .popover-content {
+    background-color: #ffffff !important;
+    border: 1px solid #d1d5db !important;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1) !important;
+  }
+
+  .dropdown-menu *, .menu *, [role="menuitem"] {
+    color: #374151 !important;
+  }
+
+  .dark .dropdown-menu, .dark .menu, .dark [role="menu"], .dark .popover-content {
+    background-color: #1f2937 !important;
+    border-color: #374151 !important;
+  }
+
+  .dark .dropdown-menu *, .dark .menu *, .dark [role="menuitem"] {
+    color: #e5e7eb !important;
+  }
+
+  /* Component-specific text visibility fixes */
+  .text-primary {
+    color: hsl(var(--primary)) !important;
+  }
+
+  .text-secondary {
+    color: hsl(var(--secondary-foreground)) !important;
+  }
+
+  .text-muted {
+    color: hsl(var(--muted-foreground)) !important;
+  }
+
+  /* Force visibility for basic colors */
+  .text-white {
+    color: #ffffff !important;
+  }
+
+  .text-black {
+    color: #000000 !important;
+  }
+
+  /* Sidebar specific fixes */
+  aside span, aside div, aside p {
+    color: #374151 !important;
+  }
+
+  aside h1, aside h2, aside h3, aside h4, aside h5, aside h6 {
+    color: #111827 !important;
+  }
+
+  /* Header and navigation */
+  header span, header div, header p {
+    color: #374151 !important;
+  }
+
+  header h1, header h2, header h3 {
+    color: #111827 !important;
+  }
+
+  /* Main content area */
+  main span, main div:not(.bg-gradient-to-r):not(.bg-gradient-to-br), main p {
+    color: #374151 !important;
+  }
+
+  main h1, main h2, main h3, main h4, main h5, main h6 {
+    color: #111827 !important;
+  }
+
+  /* Card components */
+  .bg-white span, .bg-white div:not(.bg-gradient-to-r):not(.bg-gradient-to-br), .bg-white p {
+    color: #374151 !important;
+  }
+
+  .bg-white h1, .bg-white h2, .bg-white h3, .bg-white h4, .bg-white h5, .bg-white h6 {
+    color: #111827 !important;
+  }
+
+  /* Ensure placeholder text is visible */
+  ::placeholder {
+    color: #9ca3af !important;
+    opacity: 1 !important;
+  }
+
+  /* Force button text visibility */
+  button span, button div, button p {
+    color: inherit !important;
+  }
+
+  /* Search input specific */
+  input[type="search"], input[type="text"], input[type="email"], input[type="password"] {
+    color: #111827 !important;
+    background-color: #ffffff !important;
+  }
+
+  .dark input[type="search"], .dark input[type="text"], .dark input[type="email"], .dark input[type="password"] {
+    color: #f9fafb !important;
+    background-color: #374151 !important;
+  }
+
+  /* Dark mode text fixes - using specific selectors to avoid conflicts */
+  .dark span, .dark div:not(.bg-gradient-to-r):not(.bg-gradient-to-br), .dark p {
+    color: #e5e7eb !important;
+  }
+
+  .dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {
+    color: #f9fafb !important;
+  }
+
+  /* Specific overrides for dark mode text colors */
+  .dark {
+    color: #e5e7eb !important;
+  }
+
+  .dark .text-primary {
+    color: hsl(var(--primary)) !important;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 9999px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #4b5563;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #6b7280;
+}
+
+/* Editor styles */
+.ProseMirror {
+  outline: none;
+  padding: 0;
+  margin: 0;
+}
+
+.ProseMirror p.is-editor-empty:first-child::before {
+  content: attr(data-placeholder);
+  float: left;
+  color: hsl(var(--muted-foreground));
+  pointer-events: none;
+  height: 0;
+}
+
+.ProseMirror .tableWrapper {
+  overflow-x: auto;
+  margin: 1rem 0;
+}
+
+.ProseMirror table {
+  border-collapse: collapse;
+  table-layout: fixed;
+  width: 100%;
+  overflow: hidden;
+}
+
+.ProseMirror table td,
+.ProseMirror table th {
+  min-width: 1em;
+  border: 2px solid hsl(var(--border));
+  padding: 8px;
+  vertical-align: top;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.ProseMirror table th {
+  font-weight: bold;
+  text-align: left;
+  background-color: hsl(var(--muted));
+}
+
+.ProseMirror .selectedCell:after {
+  z-index: 2;
+  position: absolute;
+  content: "";
+  left: 0; right: 0; top: 0; bottom: 0;
+  background: rgba(200, 200, 255, 0.4);
+  pointer-events: none;
+}
+
+/* Block drag handle */
+.block-drag-handle {
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.block-container:hover .block-drag-handle {
+  opacity: 1;
+}
+
+/* Collaboration cursors */
+.collaboration-cursor {
+  position: relative;
+  margin-left: -1px;
+  margin-right: -1px;
+  border-left: 1px solid #0969da;
+  border-right: 1px solid #0969da;
+  word-break: normal;
+  pointer-events: none;
+}
+
+.collaboration-cursor::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -1px;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 0 4px 4px;
+  border-color: transparent transparent #0969da transparent;
+}
+
+/* Loading animations */
+.skeleton {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  background-color: hsl(var(--muted));
+  border-radius: 0.375rem;
+}
+
+/* Custom animations */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.slide-in {
+  animation: slideIn 0.2s ease-out;
+}
+
+/* Database styles */
+.database-cell {
+  min-height: 32px;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  border-right: 1px solid hsl(var(--border));
+}
+
+.database-cell:last-child {
+  border-right: 0;
+}
+
+.database-header {
+  font-weight: 500;
+  background-color: hsl(var(--muted) / 0.5);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+/* Kanban styles */
+.kanban-column {
+  min-height: 200px;
+  padding: 0.75rem;
+  background-color: hsl(var(--muted) / 0.3);
+  border-radius: 0.5rem;
+}
+
+.kanban-card {
+  padding: 0.75rem;
+  background-color: hsl(var(--card));
+  border-radius: 0.375rem;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  border: 1px solid hsl(var(--border));
+  cursor: pointer;
+  transition-property: box-shadow;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.kanban-card:hover {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}

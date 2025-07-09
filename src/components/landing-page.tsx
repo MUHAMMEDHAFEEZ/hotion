@@ -21,14 +21,16 @@ export function LandingPage() {
 
   const handleGetStarted = () => {
     if (email) {
-      alert(`Thanks for your interest! We'll send updates to ${email}`)
+      // Save email for later and redirect to sign up
+      localStorage.setItem('hotion_signup_email', email)
+      window.location.href = '/auth/signup'
     } else {
-      alert('Please enter your email address')
+      window.location.href = '/auth/signup'
     }
   }
 
   const handleSignIn = () => {
-    alert('Sign in functionality coming soon!')
+    window.location.href = '/auth/signin'
   }
 
   const handleDemo = () => {
@@ -93,20 +95,20 @@ export function LandingPage() {
   ]
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
+    <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-orange-100">
       {/* Navigation */}
       <nav className="flex items-center justify-between p-6 max-w-7xl mx-auto">
         <div className="flex items-center space-x-2">
-          <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
+          <div className="w-8 h-8 bg-gradient-to-r from-orange-500 to-orange-600 rounded-lg flex items-center justify-center">
             <span className="text-white font-bold text-lg">H</span>
           </div>
-          <span className="text-xl font-bold text-gray-900">Hotion</span>
+          <span className="text-xl font-bold text-orange-900">Hotion</span>
         </div>
         
         <div className="hidden md:flex items-center space-x-8">
-          <a href="#features" className="text-gray-600 hover:text-gray-900 transition-colors">Features</a>
-          <a href="#pricing" className="text-gray-600 hover:text-gray-900 transition-colors">Pricing</a>
-          <a href="#about" className="text-gray-600 hover:text-gray-900 transition-colors">About</a>
+          <a href="#features" className="text-orange-600 hover:text-orange-900 transition-colors">Features</a>
+          <a href="#pricing" className="text-orange-600 hover:text-orange-900 transition-colors">Pricing</a>
+          <a href="#about" className="text-orange-600 hover:text-orange-900 transition-colors">About</a>
           <Button variant="outline" onClick={handleSignIn}>Sign In</Button>
           <Button onClick={handleGetStarted}>Get Started</Button>
         </div>
@@ -120,13 +122,13 @@ export function LandingPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-6">
+            <h1 className="text-5xl md:text-7xl font-bold text-orange-900 mb-6">
               Your ideas,
-              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">
                 {" "}amplified
               </span>
             </h1>
-            <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+            <p className="text-xl text-orange-700 mb-8 max-w-3xl mx-auto">
               The all-in-one workspace that combines docs, databases, and collaboration. 
               Build anything, together.
             </p>
@@ -144,7 +146,7 @@ export function LandingPage() {
                 placeholder="Enter your email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="px-4 py-3 rounded-l-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent w-80 text-gray-900 bg-white placeholder-gray-500"
+                className="px-4 py-3 rounded-l-lg border border-orange-300 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent w-80 text-orange-900 bg-white placeholder-orange-400"
               />
               <Button className="rounded-l-none px-6 py-3" onClick={handleGetStarted}>
                 Get Started <ArrowRight className="w-4 h-4 ml-2" />
@@ -156,14 +158,14 @@ export function LandingPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="flex items-center justify-center space-x-4 text-sm text-gray-500"
+            className="flex items-center justify-center space-x-4 text-sm text-orange-600"
           >
             <div className="flex items-center">
-              <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
+              <CheckCircle className="w-4 h-4 text-orange-500 mr-2" />
               <span>Free for personal use</span>
             </div>
             <div className="flex items-center">
-              <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
+              <CheckCircle className="w-4 h-4 text-orange-500 mr-2" />
               <span>No credit card required</span>
             </div>
           </motion.div>
@@ -177,7 +179,7 @@ export function LandingPage() {
           className="mt-20 relative"
         >
           <div className="relative rounded-xl overflow-hidden shadow-2xl bg-white">
-            <div className="aspect-video bg-gradient-to-br from-blue-100 to-purple-100 flex items-center justify-center">
+            <div className="aspect-video bg-gradient-to-br from-orange-100 to-orange-200 flex items-center justify-center">
               <Button variant="outline" size="lg" className="bg-white/80 backdrop-blur-sm" onClick={handleDemo}>
                 <Play className="w-6 h-6 mr-2" />
                 Watch Demo
@@ -190,10 +192,10 @@ export function LandingPage() {
       {/* Features Section */}
       <section id="features" className="max-w-7xl mx-auto px-6 py-20">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-4xl font-bold text-orange-900 mb-4">
             Everything you need to work better
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-xl text-orange-700 max-w-2xl mx-auto">
             Powerful features designed to help you organize, collaborate, and create like never before.
           </p>
         </div>
@@ -206,15 +208,15 @@ export function LandingPage() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="p-6 rounded-xl bg-white shadow-sm border border-gray-100 hover:shadow-lg transition-shadow"
+              className="p-6 rounded-xl bg-white shadow-sm border border-orange-200 hover:shadow-lg transition-shadow"
             >
-              <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg flex items-center justify-center text-white mb-4">
+              <div className="w-12 h-12 bg-gradient-to-r from-orange-500 to-orange-600 rounded-lg flex items-center justify-center text-white mb-4">
                 {feature.icon}
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">
+              <h3 className="text-xl font-semibold text-orange-900 mb-2">
                 {feature.title}
               </h3>
-              <p className="text-gray-600">
+              <p className="text-orange-700">
                 {feature.description}
               </p>
             </motion.div>
@@ -223,13 +225,13 @@ export function LandingPage() {
       </section>
 
       {/* Testimonials */}
-      <section className="bg-gray-50 py-20">
+      <section className="bg-orange-50 py-20">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-4xl font-bold text-orange-900 mb-4">
               Loved by teams everywhere
             </h2>
-            <p className="text-xl text-gray-600">
+            <p className="text-xl text-orange-700">
               See what our users have to say about Hotion
             </p>
           </div>
@@ -242,17 +244,17 @@ export function LandingPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="bg-white p-6 rounded-xl shadow-sm border border-gray-100"
+                className="bg-white p-6 rounded-xl shadow-sm border border-orange-200"
               >
                 <div className="flex items-center mb-4">
                   {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 text-yellow-400 fill-current" />
+                    <Star key={i} className="w-4 h-4 text-orange-400 fill-current" />
                   ))}
                 </div>
-                <p className="text-gray-600 mb-4">"{testimonial.content}"</p>
+                <p className="text-orange-700 mb-4">"{testimonial.content}"</p>
                 <div>
-                  <div className="font-semibold text-gray-900">{testimonial.name}</div>
-                  <div className="text-sm text-gray-500">
+                  <div className="font-semibold text-orange-900">{testimonial.name}</div>
+                  <div className="text-sm text-orange-600">
                     {testimonial.role} at {testimonial.company}
                   </div>
                 </div>
@@ -264,7 +266,7 @@ export function LandingPage() {
 
       {/* CTA Section */}
       <section className="max-w-7xl mx-auto px-6 py-20">
-        <div className="text-center bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-12 text-white">
+        <div className="text-center bg-gradient-to-r from-orange-500 to-orange-600 rounded-2xl p-12 text-white">
           <h2 className="text-4xl font-bold mb-4">
             Ready to transform your workflow?
           </h2>
@@ -283,17 +285,17 @@ export function LandingPage() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12">
+      <footer className="bg-orange-900 text-white py-12">
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="flex items-center space-x-2 mb-4 md:mb-0">
-              <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
+              <div className="w-8 h-8 bg-gradient-to-r from-orange-500 to-orange-600 rounded-lg flex items-center justify-center">
                 <span className="text-white font-bold text-lg">H</span>
               </div>
               <span className="text-xl font-bold">Hotion</span>
             </div>
             
-            <div className="flex space-x-6 text-gray-400">
+            <div className="flex space-x-6 text-orange-300">
               <a href="#" className="hover:text-white transition-colors">Privacy</a>
               <a href="#" className="hover:text-white transition-colors">Terms</a>
               <a href="#" className="hover:text-white transition-colors">Support</a>
@@ -301,7 +303,7 @@ export function LandingPage() {
             </div>
           </div>
           
-          <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+          <div className="border-t border-orange-800 mt-8 pt-8 text-center text-orange-300">
             <p>&copy; 2024 Hotion. All rights reserved.</p>
           </div>
         </div>

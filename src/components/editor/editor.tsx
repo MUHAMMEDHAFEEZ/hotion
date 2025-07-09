@@ -111,23 +111,22 @@ export function Editor({
     onUpdate: ({ editor }) => {
       const html = editor.getHTML()
       onChange?.(html)
-    },
-    editorProps: {
-      attributes: {
-        class: cn(
-          'prose prose-sm sm:prose lg:prose-lg xl:prose-2xl mx-auto focus:outline-none',
-          'prose-headings:font-bold prose-headings:text-gray-900',
-          'prose-p:text-gray-700 prose-p:leading-relaxed',
-          'prose-a:text-blue-600 prose-a:no-underline hover:prose-a:underline',
-          'prose-blockquote:border-l-blue-500 prose-blockquote:bg-blue-50 prose-blockquote:p-4',
-          'prose-code:bg-gray-100 prose-code:px-1 prose-code:py-0.5 prose-code:rounded',
-          'prose-pre:bg-gray-900 prose-pre:text-gray-100',
-          'prose-ul:list-disc prose-ol:list-decimal',
-          'prose-li:marker:text-gray-400',
-          'max-w-none'
-        ),
+    },      editorProps: {
+        attributes: {
+          class: cn(
+            'prose prose-sm sm:prose lg:prose-lg xl:prose-2xl mx-auto focus:outline-none',
+            'prose-headings:font-bold prose-headings:text-orange-900',
+            'prose-p:text-orange-700 prose-p:leading-relaxed',
+            'prose-a:text-orange-600 prose-a:no-underline hover:prose-a:underline',
+            'prose-blockquote:border-l-orange-500 prose-blockquote:bg-orange-50 prose-blockquote:p-4',
+            'prose-code:bg-orange-100 prose-code:px-1 prose-code:py-0.5 prose-code:rounded',
+            'prose-pre:bg-orange-900 prose-pre:text-orange-100',
+            'prose-ul:list-disc prose-ol:list-decimal',
+            'prose-li:marker:text-orange-400',
+            'max-w-none'
+          ),
+        },
       },
-    },
   })
 
   const ToolbarButton = ({ 
@@ -148,7 +147,7 @@ export function Editor({
       disabled={disabled}
       className={cn(
         "h-8 w-8 p-0",
-        isActive && "bg-blue-100 text-blue-700 hover:bg-blue-200"
+        isActive && "bg-orange-100 text-orange-700 hover:bg-orange-200"
       )}
     >
       {children}
@@ -170,14 +169,14 @@ export function Editor({
     ]
 
     return (
-      <div className="absolute left-0 top-8 z-10 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg p-2 min-w-48">
-        <div className="text-xs font-medium text-gray-500 dark:text-gray-400 mb-2 px-2">
+      <div className="absolute left-0 top-8 z-10 bg-white dark:bg-gray-800 border border-orange-200 dark:border-gray-700 rounded-lg shadow-lg p-2 min-w-48">
+        <div className="text-xs font-medium text-orange-600 dark:text-gray-400 mb-2 px-2">
           Turn into
         </div>
         {blockTypes.map((block) => (
           <button
             key={block.type}
-            className="w-full flex items-center space-x-2 px-2 py-1.5 text-sm hover:bg-gray-100 dark:hover:bg-gray-700 rounded"
+            className="w-full flex items-center space-x-2 px-2 py-1.5 text-sm hover:bg-orange-100 dark:hover:bg-gray-700 rounded"
             onClick={() => {
               if (block.type === 'table') {
                 editor?.chain().focus().insertTable({ rows: 3, cols: 3, withHeaderRow: true }).run()
@@ -212,14 +211,14 @@ export function Editor({
   }
 
   if (!editor) {
-    return <div className="animate-pulse bg-gray-200 h-64 rounded-lg" />
+    return <div className="animate-pulse bg-orange-200 h-64 rounded-lg" />
   }
 
   return (
-    <div className={cn("border border-gray-200 dark:border-gray-700 rounded-lg", className)}>
+    <div className={cn("border border-orange-200 dark:border-gray-700 rounded-lg", className)}>
       {/* Toolbar */}
       {editable && (
-        <div className="border-b border-gray-200 dark:border-gray-700 p-3">
+        <div className="border-b border-orange-200 dark:border-gray-700 p-3">
           <div className="flex items-center space-x-1 flex-wrap gap-2">
             {/* Undo/Redo */}
             <div className="flex items-center space-x-1">
@@ -237,7 +236,7 @@ export function Editor({
               </ToolbarButton>
             </div>
 
-            <div className="w-px h-6 bg-gray-200 dark:bg-gray-700" />
+            <div className="w-px h-6 bg-orange-200 dark:bg-gray-700" />
 
             {/* Text Formatting */}
             <div className="flex items-center space-x-1">
@@ -267,7 +266,7 @@ export function Editor({
               </ToolbarButton>
             </div>
 
-            <div className="w-px h-6 bg-gray-200 dark:bg-gray-700" />
+            <div className="w-px h-6 bg-orange-200 dark:bg-gray-700" />
 
             {/* Block Types */}
             <div className="flex items-center space-x-1">
@@ -291,7 +290,7 @@ export function Editor({
               </ToolbarButton>
             </div>
 
-            <div className="w-px h-6 bg-gray-200 dark:bg-gray-700" />
+            <div className="w-px h-6 bg-orange-200 dark:bg-gray-700" />
 
             {/* Lists */}
             <div className="flex items-center space-x-1">
@@ -315,7 +314,7 @@ export function Editor({
               </ToolbarButton>
             </div>
 
-            <div className="w-px h-6 bg-gray-200 dark:bg-gray-700" />
+            <div className="w-px h-6 bg-orange-200 dark:bg-gray-700" />
 
             {/* Other */}
             <div className="flex items-center space-x-1">
