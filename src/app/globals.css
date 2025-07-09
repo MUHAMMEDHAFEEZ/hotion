@@ -1,0 +1,228 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222.2 84% 4.9%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96%;
+    --accent-foreground: 222.2 84% 4.9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 84% 4.9%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 94.1%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  /* Input field improvements */
+  input[type="email"], input[type="text"], input[type="password"] {
+    @apply text-gray-900 bg-white;
+  }
+
+  input[type="email"]:focus, input[type="text"]:focus, input[type="password"]:focus {
+    @apply ring-2 ring-blue-500 border-transparent;
+  }
+
+  input::placeholder {
+    @apply text-gray-500;
+  }
+
+  /* Button hover effects */
+  button:hover {
+    @apply transition-all duration-200;
+  }
+
+  /* Ensure text is visible in inputs */
+  .dark input[type="email"], .dark input[type="text"], .dark input[type="password"] {
+    @apply text-gray-100 bg-gray-800 border-gray-600;
+  }
+
+  .dark input::placeholder {
+    @apply text-gray-400;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-300 dark:bg-gray-600 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-400 dark:bg-gray-500;
+}
+
+/* Editor styles */
+.ProseMirror {
+  outline: none;
+  padding: 0;
+  margin: 0;
+}
+
+.ProseMirror p.is-editor-empty:first-child::before {
+  content: attr(data-placeholder);
+  float: left;
+  color: hsl(var(--muted-foreground));
+  pointer-events: none;
+  height: 0;
+}
+
+.ProseMirror .tableWrapper {
+  overflow-x: auto;
+  margin: 1rem 0;
+}
+
+.ProseMirror table {
+  border-collapse: collapse;
+  table-layout: fixed;
+  width: 100%;
+  overflow: hidden;
+}
+
+.ProseMirror table td,
+.ProseMirror table th {
+  min-width: 1em;
+  border: 2px solid hsl(var(--border));
+  padding: 8px;
+  vertical-align: top;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.ProseMirror table th {
+  font-weight: bold;
+  text-align: left;
+  background-color: hsl(var(--muted));
+}
+
+.ProseMirror .selectedCell:after {
+  z-index: 2;
+  position: absolute;
+  content: "";
+  left: 0; right: 0; top: 0; bottom: 0;
+  background: rgba(200, 200, 255, 0.4);
+  pointer-events: none;
+}
+
+/* Block drag handle */
+.block-drag-handle {
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.block-container:hover .block-drag-handle {
+  opacity: 1;
+}
+
+/* Collaboration cursors */
+.collaboration-cursor {
+  position: relative;
+  margin-left: -1px;
+  margin-right: -1px;
+  border-left: 1px solid #0969da;
+  border-right: 1px solid #0969da;
+  word-break: normal;
+  pointer-events: none;
+}
+
+.collaboration-cursor::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -1px;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 0 4px 4px;
+  border-color: transparent transparent #0969da transparent;
+}
+
+/* Loading animations */
+.skeleton {
+  @apply animate-pulse bg-muted rounded;
+}
+
+/* Custom animations */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.slide-in {
+  animation: slideIn 0.2s ease-out;
+}
+
+/* Database styles */
+.database-cell {
+  @apply min-h-[32px] px-2 py-1 border-r border-border last:border-r-0;
+}
+
+.database-header {
+  @apply font-medium bg-muted/50 sticky top-0 z-10;
+}
+
+/* Kanban styles */
+.kanban-column {
+  @apply min-h-[200px] p-3 bg-muted/30 rounded-lg;
+}
+
+.kanban-card {
+  @apply p-3 bg-card rounded-md shadow-sm border hover:shadow-md transition-shadow cursor-pointer;
+}

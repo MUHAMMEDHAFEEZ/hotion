@@ -1,0 +1,194 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String?
+  avatar    String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  workspaces      WorkspaceMember[]
+  pages           Page[]
+  blocks          Block[]
+  comments        Comment[]
+  collaborations  Collaboration[]
+  templates       Template[]
+
+  @@map("users")
+}
+
+model Workspace {
+  id          String   @id @default(cuid())
+  name        String
+  icon        String?
+  description String?
+  isPublic    Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  members   WorkspaceMember[]
+  pages     Page[]
+  databases Database[]
+
+  @@map("workspaces")
+}
+
+model WorkspaceMember {
+  id          String          @id @default(cuid())
+  userId      String
+  workspaceId String
+  role        String       @default("MEMBER") // WorkspaceRole as string
+  createdAt   DateTime        @default(now())
+
+  // Relations
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  workspace Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, workspaceId])
+  @@map("workspace_members")
+}
+
+model Page {
+  id          String     @id @default(cuid())
+  title       String     @default("Untitled")
+  icon        String?
+  cover       String?
+  content     String?  // JSON as string
+  isPublished Boolean    @default(false)
+  isArchived  Boolean    @default(false)
+  parentId    String?
+  workspaceId String?
+  userId      String
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+
+  // Relations
+  user         User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  workspace    Workspace?      @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  parent       Page?           @relation("PageHierarchy", fields: [parentId], references: [id], onDelete: Cascade)
+  children     Page[]          @relation("PageHierarchy")
+  blocks       Block[]
+  comments     Comment[]
+  collaborations Collaboration[]
+
+  @@map("pages")
+}
+
+model Block {
+  id         String    @id @default(cuid())
+  type       String   // BlockType as string
+  content    String?  // JSON as string
+  properties String?  // JSON as string
+  pageId     String
+  userId     String
+  parentId   String?
+  position   Float
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+
+  // Relations
+  page     Page    @relation(fields: [pageId], references: [id], onDelete: Cascade)
+  user     User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  parent   Block?  @relation("BlockHierarchy", fields: [parentId], references: [id], onDelete: Cascade)
+  children Block[] @relation("BlockHierarchy")
+
+  @@map("blocks")
+}
+
+model Database {
+  id          String   @id @default(cuid())
+  name        String
+  description String?
+  icon        String?
+  cover       String?
+  schema      String   // Database schema definition as JSON string
+  workspaceId String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  workspace Workspace      @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  records   DatabaseRecord[]
+
+  @@map("databases")
+}
+
+model DatabaseRecord {
+  id         String   @id @default(cuid())
+  data       String   // Record data as JSON string
+  databaseId String
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  // Relations
+  database Database @relation(fields: [databaseId], references: [id], onDelete: Cascade)
+
+  @@map("database_records")
+}
+
+model Template {
+  id          String         @id @default(cuid())
+  name        String
+  description String?
+  icon        String?
+  cover       String?
+  content     String   // JSON as string
+  category    String       @default("PERSONAL") // TemplateCategory as string
+  isPublic    Boolean        @default(false)
+  userId      String
+  createdAt   DateTime       @default(now())
+  updatedAt   DateTime       @updatedAt
+
+  // Relations
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("templates")
+}
+
+model Comment {
+  id        String   @id @default(cuid())
+  content   String
+  pageId    String
+  userId    String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  page Page @relation(fields: [pageId], references: [id], onDelete: Cascade)
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("comments")
+}
+
+model Collaboration {
+  id        String   @id @default(cuid())
+  pageId    String
+  userId    String
+  cursor    String?  // Cursor position and selection as JSON string
+  lastSeen  DateTime @default(now())
+
+  // Relations
+  page Page @relation(fields: [pageId], references: [id], onDelete: Cascade)
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([pageId, userId])
+  @@map("collaborations")
+}
+
+// Note: SQLite doesn't support enums, so we use strings with validation in the application layer
+// Possible values for workspace roles: "OWNER", "ADMIN", "MEMBER", "GUEST"
+// Possible values for block types: "PARAGRAPH", "HEADING_1", "HEADING_2", "HEADING_3", etc.
+// Possible values for template categories: "PERSONAL", "TEAM", "EDUCATION", "BUSINESS", etc.
