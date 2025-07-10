@@ -101,7 +101,7 @@ export default function SignUpPage() {
   }
 
   return (
-    <div className="auth-form min-h-screen bg-gradient-to-br from-orange-50 via-white to-orange-100 flex items-center justify-center p-4">
+    <div className="auth-form min-h-screen bg-gradient-to-br from-primary/20 via-background to-primary/20 flex items-center justify-center p-4">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -109,25 +109,25 @@ export default function SignUpPage() {
         className="w-full max-w-md"
       >
         {/* Back to home */}
-        <Link href="/" className="inline-flex items-center text-orange-600 hover:text-orange-900 mb-8 transition-colors">
+        <Link href="/" className="inline-flex items-center text-muted-foreground hover:text-foreground mb-8 transition-colors">
           <ArrowLeft className="w-4 h-4 mr-2" />
-          <span className="text-orange-700 font-medium">Back to home</span>
+          <span className="text-muted-foreground font-medium">Back to home</span>
         </Link>
 
         {/* Logo */}
         <div className="text-center mb-8">
-          <div className="w-12 h-12 bg-gradient-to-r from-orange-500 to-orange-600 rounded-xl flex items-center justify-center mx-auto mb-4">
-            <span className="text-white font-bold text-xl">H</span>
+          <div className="w-12 h-12 bg-gradient-to-r from-primary to-primary/90 rounded-xl flex items-center justify-center mx-auto mb-4">
+            <span className="text-primary-foreground font-bold text-xl">H</span>
           </div>
-          <h1 className="text-2xl font-bold text-orange-900">Create your account</h1>
-          <p className="text-orange-700 mt-2 font-medium">Join Hotion and start organizing your thoughts</p>
+          <h1 className="text-2xl font-bold text-foreground">Create your account</h1>
+          <p className="text-muted-foreground mt-2 font-medium">Join Hotion and start organizing your thoughts</p>
         </div>
 
         {/* Sign Up Form */}
-        <div className="bg-white rounded-xl shadow-lg border border-orange-200 p-8">
+        <div className="bg-card rounded-xl shadow-lg border border-border p-8">
           <form onSubmit={handleSignUp} className="space-y-6">
             <div>
-              <label htmlFor="name" className="block text-sm font-semibold text-orange-800 mb-2">
+              <label htmlFor="name" className="block text-sm font-semibold text-foreground mb-2">
                 Full Name
               </label>
               <input
@@ -136,14 +136,14 @@ export default function SignUpPage() {
                 type="text"
                 value={formData.name}
                 onChange={handleChange}
-                className="w-full px-4 py-3 border border-orange-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent text-orange-900 bg-white placeholder-orange-400 font-medium"
+                className="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-foreground bg-input placeholder-muted-foreground font-medium"
                 placeholder="Enter your full name"
                 required
               />
             </div>
 
             <div>
-              <label htmlFor="email" className="block text-sm font-semibold text-orange-800 mb-2">
+              <label htmlFor="email" className="block text-sm font-semibold text-foreground mb-2">
                 Email address
               </label>
               <input
@@ -152,14 +152,14 @@ export default function SignUpPage() {
                 type="email"
                 value={formData.email}
                 onChange={handleChange}
-                className="w-full px-4 py-3 border border-orange-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent text-orange-900 bg-white placeholder-orange-400 font-medium"
+                className="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-foreground bg-input placeholder-muted-foreground font-medium"
                 placeholder="Enter your email"
                 required
               />
             </div>
 
             <div>
-              <label htmlFor="password" className="block text-sm font-semibold text-orange-800 mb-2">
+              <label htmlFor="password" className="block text-sm font-semibold text-foreground mb-2">
                 Password
               </label>
               <div className="relative">
@@ -169,43 +169,22 @@ export default function SignUpPage() {
                   type={showPassword ? 'text' : 'password'}
                   value={formData.password}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border border-orange-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent text-orange-900 bg-white placeholder-orange-400 pr-12 font-medium"
+                  className="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-foreground bg-input placeholder-muted-foreground pr-12 font-medium"
                   placeholder="Create a password"
                   required
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-orange-600 hover:text-orange-800"
+                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-muted-foreground hover:text-foreground"
                 >
                   {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                 </button>
               </div>
-              
-              {/* Password Strength Indicator */}
-              {formData.password && (
-                <div className="mt-2">
-                  <div className="flex space-x-1 mb-1">
-                    {[1, 2, 3, 4, 5].map((level) => (
-                      <div
-                        key={level}
-                        className={`h-1 flex-1 rounded-full transition-colors ${
-                          level <= passwordStrength(formData.password)
-                            ? getStrengthColor(passwordStrength(formData.password))
-                            : 'bg-orange-200'
-                        }`}
-                      />
-                    ))}
-                  </div>
-                  <p className="text-xs text-orange-600 font-medium">
-                    {getStrengthText(passwordStrength(formData.password))}
-                  </p>
-                </div>
-              )}
             </div>
 
             <div>
-              <label htmlFor="confirmPassword" className="block text-sm font-semibold text-orange-800 mb-2">
+              <label htmlFor="confirmPassword" className="block text-sm font-semibold text-foreground mb-2">
                 Confirm Password
               </label>
               <div className="relative">
@@ -215,14 +194,14 @@ export default function SignUpPage() {
                   type={showConfirmPassword ? 'text' : 'password'}
                   value={formData.confirmPassword}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border border-orange-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent text-orange-900 bg-white placeholder-orange-400 pr-12 font-medium"
+                  className="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-foreground bg-input placeholder-muted-foreground pr-12 font-medium"
                   placeholder="Confirm your password"
                   required
                 />
                 <button
                   type="button"
                   onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-orange-600 hover:text-orange-800"
+                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-muted-foreground hover:text-foreground"
                 >
                   {showConfirmPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                 </button>
@@ -249,15 +228,15 @@ export default function SignUpPage() {
                 type="checkbox"
                 checked={agreedToTerms}
                 onChange={(e) => setAgreedToTerms(e.target.checked)}
-                className="mt-1 w-4 h-4 text-orange-600 border-orange-300 rounded focus:ring-orange-500"
+                className="mt-1 w-4 h-4 text-primary border-border rounded focus:ring-primary"
               />
-              <label htmlFor="terms" className="text-sm text-orange-700 font-medium">
+              <label htmlFor="terms" className="text-sm text-foreground font-medium">
                 I agree to the{' '}
-                <Link href="/terms" className="text-orange-600 hover:text-orange-800 underline">
+                <Link href="/terms" className="text-primary hover:text-primary/80 underline">
                   Terms of Service
                 </Link>{' '}
                 and{' '}
-                <Link href="/privacy" className="text-orange-600 hover:text-orange-800 underline">
+                <Link href="/privacy" className="text-primary hover:text-primary/80 underline">
                   Privacy Policy
                 </Link>
               </label>
@@ -266,7 +245,7 @@ export default function SignUpPage() {
             <Button
               type="submit"
               disabled={isLoading}
-              className="w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-semibold py-3 px-4 rounded-lg transition-all duration-200 transform hover:scale-105"
+              className="w-full bg-gradient-to-r from-primary to-primary/90 hover:from-primary/90 hover:to-primary text-white font-semibold py-3 px-4 rounded-lg transition-all duration-200 transform hover:scale-105"
             >
               {isLoading ? (
                 <div className="flex items-center justify-center">
@@ -281,9 +260,9 @@ export default function SignUpPage() {
 
           {/* Sign in link */}
           <div className="mt-6 text-center">
-            <p className="text-orange-600 font-medium">
+            <p className="text-primary font-medium">
               Already have an account?{' '}
-              <Link href="/auth/signin" className="text-orange-600 hover:text-orange-800 font-semibold">
+              <Link href="/auth/signin" className="text-primary hover:text-primary/80 font-semibold">
                 Sign in
               </Link>
             </p>

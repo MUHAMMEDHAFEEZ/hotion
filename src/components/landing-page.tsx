@@ -95,20 +95,20 @@ export function LandingPage() {
   ]
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-orange-100">
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-background to-purple-100 dark:from-background dark:via-background dark:to-background">
       {/* Navigation */}
       <nav className="flex items-center justify-between p-6 max-w-7xl mx-auto">
         <div className="flex items-center space-x-2">
-          <div className="w-8 h-8 bg-gradient-to-r from-orange-500 to-orange-600 rounded-lg flex items-center justify-center">
-            <span className="text-white font-bold text-lg">H</span>
+          <div className="w-8 h-8 bg-gradient-to-r from-primary to-primary/90 rounded-lg flex items-center justify-center">
+            <span className="text-primary-foreground font-bold text-lg">H</span>
           </div>
-          <span className="text-xl font-bold text-orange-900">Hotion</span>
+          <span className="text-xl font-bold text-foreground">Hotion</span>
         </div>
         
         <div className="hidden md:flex items-center space-x-8">
-          <a href="#features" className="text-orange-600 hover:text-orange-900 transition-colors">Features</a>
-          <a href="#pricing" className="text-orange-600 hover:text-orange-900 transition-colors">Pricing</a>
-          <a href="#about" className="text-orange-600 hover:text-orange-900 transition-colors">About</a>
+          <a href="#features" className="text-muted-foreground hover:text-primary transition-colors">Features</a>
+          <a href="#pricing" className="text-muted-foreground hover:text-primary transition-colors">Pricing</a>
+          <a href="#about" className="text-muted-foreground hover:text-primary transition-colors">About</a>
           <Button variant="outline" onClick={handleSignIn}>Sign In</Button>
           <Button onClick={handleGetStarted}>Get Started</Button>
         </div>
@@ -122,13 +122,13 @@ export function LandingPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h1 className="text-5xl md:text-7xl font-bold text-orange-900 mb-6">
+            <h1 className="text-5xl md:text-7xl font-bold text-foreground mb-6">
               Your ideas,
-              <span className="bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent">
                 {" "}amplified
               </span>
             </h1>
-            <p className="text-xl text-orange-700 mb-8 max-w-3xl mx-auto">
+            <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
               The all-in-one workspace that combines docs, databases, and collaboration. 
               Build anything, together.
             </p>
@@ -146,7 +146,7 @@ export function LandingPage() {
                 placeholder="Enter your email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="px-4 py-3 rounded-l-lg border border-orange-300 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent w-80 text-orange-900 bg-white placeholder-orange-400"
+                className="px-4 py-3 rounded-l-lg border border-border focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent w-80 text-foreground bg-background placeholder-muted-foreground"
               />
               <Button className="rounded-l-none px-6 py-3" onClick={handleGetStarted}>
                 Get Started <ArrowRight className="w-4 h-4 ml-2" />
@@ -158,14 +158,14 @@ export function LandingPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="flex items-center justify-center space-x-4 text-sm text-orange-600"
+            className="flex items-center justify-center space-x-4 text-sm text-muted-foreground"
           >
             <div className="flex items-center">
-              <CheckCircle className="w-4 h-4 text-orange-500 mr-2" />
+              <CheckCircle className="w-4 h-4 text-primary mr-2" />
               <span>Free for personal use</span>
             </div>
             <div className="flex items-center">
-              <CheckCircle className="w-4 h-4 text-orange-500 mr-2" />
+              <CheckCircle className="w-4 h-4 text-primary mr-2" />
               <span>No credit card required</span>
             </div>
           </motion.div>
@@ -178,9 +178,9 @@ export function LandingPage() {
           transition={{ duration: 0.8, delay: 0.6 }}
           className="mt-20 relative"
         >
-          <div className="relative rounded-xl overflow-hidden shadow-2xl bg-white">
-            <div className="aspect-video bg-gradient-to-br from-orange-100 to-orange-200 flex items-center justify-center">
-              <Button variant="outline" size="lg" className="bg-white/80 backdrop-blur-sm" onClick={handleDemo}>
+          <div className="relative rounded-xl overflow-hidden shadow-2xl bg-card">
+            <div className="aspect-video bg-gradient-to-br from-purple-100 to-purple-200 dark:from-purple-900 dark:to-purple-800 flex items-center justify-center">
+              <Button variant="outline" size="lg" className="bg-background/80 backdrop-blur-sm" onClick={handleDemo}>
                 <Play className="w-6 h-6 mr-2" />
                 Watch Demo
               </Button>
@@ -192,10 +192,10 @@ export function LandingPage() {
       {/* Features Section */}
       <section id="features" className="max-w-7xl mx-auto px-6 py-20">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-orange-900 mb-4">
+          <h2 className="text-4xl font-bold text-foreground mb-4">
             Everything you need to work better
           </h2>
-          <p className="text-xl text-orange-700 max-w-2xl mx-auto">
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             Powerful features designed to help you organize, collaborate, and create like never before.
           </p>
         </div>
@@ -208,15 +208,15 @@ export function LandingPage() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="p-6 rounded-xl bg-white shadow-sm border border-orange-200 hover:shadow-lg transition-shadow"
+              className="p-6 rounded-xl bg-card shadow-sm border border-border hover:shadow-lg transition-shadow"
             >
-              <div className="w-12 h-12 bg-gradient-to-r from-orange-500 to-orange-600 rounded-lg flex items-center justify-center text-white mb-4">
+              <div className="w-12 h-12 bg-gradient-to-r from-primary to-primary/80 rounded-lg flex items-center justify-center text-primary-foreground mb-4">
                 {feature.icon}
               </div>
-              <h3 className="text-xl font-semibold text-orange-900 mb-2">
+              <h3 className="text-xl font-semibold text-foreground mb-2">
                 {feature.title}
               </h3>
-              <p className="text-orange-700">
+              <p className="text-muted-foreground">
                 {feature.description}
               </p>
             </motion.div>
@@ -225,13 +225,13 @@ export function LandingPage() {
       </section>
 
       {/* Testimonials */}
-      <section className="bg-orange-50 py-20">
+      <section className="bg-purple-50 dark:bg-background py-20">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-orange-900 mb-4">
+            <h2 className="text-4xl font-bold text-foreground mb-4">
               Loved by teams everywhere
             </h2>
-            <p className="text-xl text-orange-700">
+            <p className="text-xl text-muted-foreground">
               See what our users have to say about Hotion
             </p>
           </div>
@@ -244,7 +244,7 @@ export function LandingPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="bg-white p-6 rounded-xl shadow-sm border border-orange-200"
+                className="bg-card p-6 rounded-xl shadow-sm border border-border"
               >
                 <div className="flex items-center mb-4">
                   {[...Array(testimonial.rating)].map((_, i) => (

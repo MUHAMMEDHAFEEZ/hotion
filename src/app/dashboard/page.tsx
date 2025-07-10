@@ -143,28 +143,28 @@ export default function DashboardPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-background dark:bg-background">
       {/* Header */}
-      <header className="bg-white border-b border-gray-200 px-6 py-4">
+      <header className="bg-background dark:bg-background border-b border-border dark:border-border px-6 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center space-x-3">
-            <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-sm">H</span>
+            <div className="w-8 h-8 bg-gradient-to-r from-primary to-primary/90 rounded-lg flex items-center justify-center">
+              <span className="text-primary-foreground font-bold text-sm">H</span>
             </div>
-            <h1 className="text-xl font-semibold text-gray-900">Hotion</h1>
+            <h1 className="text-xl font-semibold text-foreground">Hotion</h1>
           </div>
 
           {/* Search */}
           <div className="flex-1 max-w-md mx-8">
             <div className="relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
               <input
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search pages..."
-                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 bg-white"
+                className="w-full pl-10 pr-4 py-2 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-foreground bg-input"
               />
             </div>
           </div>
@@ -173,10 +173,10 @@ export default function DashboardPage() {
           <div className="relative">
             <button
               onClick={() => setShowUserMenu(!showUserMenu)}
-              className="flex items-center space-x-2 text-gray-700 hover:text-gray-900 p-2 rounded-lg hover:bg-gray-100"
+              className="flex items-center space-x-2 text-foreground hover:text-primary p-2 rounded-lg hover:bg-accent"
             >
-              <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center">
-                <span className="text-white font-medium text-sm">
+              <div className="w-8 h-8 bg-secondary rounded-full flex items-center justify-center">
+                <span className="text-secondary-foreground font-medium text-sm">
                   {user.name.charAt(0).toUpperCase()}
                 </span>
               </div>
@@ -185,23 +185,23 @@ export default function DashboardPage() {
             </button>
 
             {showUserMenu && (
-              <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 py-1 z-10">
-                <div className="px-4 py-2 border-b border-gray-100">
-                  <p className="text-sm font-medium text-gray-900">{user.name}</p>
-                  <p className="text-xs text-gray-500">{user.email}</p>
+              <div className="absolute right-0 mt-2 w-48 bg-background rounded-lg shadow-lg border border-border py-1 z-10">
+                <div className="px-4 py-2 border-b border-border">
+                  <p className="text-sm font-medium text-foreground">{user.name}</p>
+                  <p className="text-xs text-muted-foreground">{user.email}</p>
                 </div>
-                <button className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center">
+                <button className="w-full text-left px-4 py-2 text-sm text-foreground hover:bg-accent flex items-center">
                   <User className="w-4 h-4 mr-2" />
                   Profile
                 </button>
-                <button className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center">
+                <button className="w-full text-left px-4 py-2 text-sm text-foreground hover:bg-accent flex items-center">
                   <Settings className="w-4 h-4 mr-2" />
                   Settings
                 </button>
-                <div className="border-t border-gray-100 mt-1 pt-1">
+                <div className="border-t border-border mt-1 pt-1">
                   <button 
                     onClick={handleLogout}
-                    className="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50 flex items-center"
+                    className="w-full text-left px-4 py-2 text-sm text-destructive hover:bg-destructive/10 flex items-center"
                   >
                     <LogOut className="w-4 h-4 mr-2" />
                     Sign out
@@ -217,10 +217,10 @@ export default function DashboardPage() {
       <main className="max-w-7xl mx-auto px-6 py-8">
         {/* Welcome Section */}
         <div className="mb-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-2">
+          <h2 className="text-2xl font-bold text-foreground mb-2">
             Good evening, {user.name.split(' ')[0]}! 👋
           </h2>
-          <p className="text-gray-600">
+          <p className="text-muted-foreground">
             Welcome back to your workspace. What would you like to work on today?
           </p>
         </div>
@@ -246,7 +246,7 @@ export default function DashboardPage() {
         {/* View Controls */}
         <div className="flex items-center justify-between mb-6">
           <div className="flex items-center space-x-4">
-            <h3 className="text-lg font-semibold text-gray-900">Your Pages</h3>
+            <h3 className="text-lg font-semibold text-foreground">Your Pages</h3>
             <div className="flex items-center space-x-2">
               <Button
                 variant={viewMode === 'grid' ? 'default' : 'outline'}
@@ -273,7 +273,7 @@ export default function DashboardPage() {
         {/* Favorites Section */}
         {favoritePages.length > 0 && (
           <div className="mb-8">
-            <h4 className="text-sm font-medium text-gray-500 uppercase tracking-wide mb-4 flex items-center">
+            <h4 className="text-sm font-medium text-muted-foreground uppercase tracking-wide mb-4 flex items-center">
               <Star className="w-4 h-4 mr-2 text-yellow-500 fill-current" />
               Favorites
             </h4>
@@ -293,7 +293,7 @@ export default function DashboardPage() {
 
         {/* Recent Pages Section */}
         <div>
-          <h4 className="text-sm font-medium text-gray-500 uppercase tracking-wide mb-4 flex items-center">
+          <h4 className="text-sm font-medium text-muted-foreground uppercase tracking-wide mb-4 flex items-center">
             <Clock className="w-4 h-4 mr-2" />
             Recent
           </h4>

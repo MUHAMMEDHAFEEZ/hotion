@@ -35,7 +35,7 @@ export default function SignInPage() {
   }
 
   return (
-    <div className="auth-form min-h-screen bg-gradient-to-br from-orange-50 via-white to-orange-100 flex items-center justify-center p-4">
+    <div className="auth-form min-h-screen bg-gradient-to-br from-primary/20 via-background to-primary/20 flex items-center justify-center p-4">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -43,25 +43,25 @@ export default function SignInPage() {
         className="w-full max-w-md"
       >
         {/* Back to home */}
-        <Link href="/" className="inline-flex items-center text-orange-600 hover:text-orange-900 mb-8 transition-colors">
+        <Link href="/" className="inline-flex items-center text-muted-foreground hover:text-foreground mb-8 transition-colors">
           <ArrowLeft className="w-4 h-4 mr-2" />
-          <span className="text-orange-700 font-medium">Back to home</span>
+          <span className="text-muted-foreground font-medium">Back to home</span>
         </Link>
 
         {/* Logo */}
         <div className="text-center mb-8">
-          <div className="w-12 h-12 bg-gradient-to-r from-orange-500 to-orange-600 rounded-xl flex items-center justify-center mx-auto mb-4">
+          <div className="w-12 h-12 bg-gradient-to-r from-primary to-primary/90 rounded-xl flex items-center justify-center mx-auto mb-4">
             <span className="text-white font-bold text-xl">H</span>
           </div>
-          <h1 className="text-2xl font-bold text-orange-900">Welcome back</h1>
-          <p className="text-orange-700 mt-2 font-medium">Sign in to your Hotion account</p>
+          <h1 className="text-2xl font-bold text-foreground">Welcome back</h1>
+          <p className="text-muted-foreground mt-2 font-medium">Sign in to your Hotion account</p>
         </div>
 
         {/* Sign In Form */}
-        <div className="bg-white rounded-xl shadow-lg border border-orange-200 p-8">
+        <div className="bg-card rounded-xl shadow-lg border border-border p-8">
           <form onSubmit={handleSignIn} className="space-y-6">
             <div>
-              <label htmlFor="email" className="block text-sm font-semibold text-orange-800 mb-2">
+              <label htmlFor="email" className="block text-sm font-semibold text-foreground mb-2">
                 Email address
               </label>
               <input
@@ -69,14 +69,14 @@ export default function SignInPage() {
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full px-4 py-3 border border-orange-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent text-orange-900 bg-white placeholder-orange-400 font-medium"
+                className="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-foreground bg-input placeholder-muted-foreground font-medium"
                 placeholder="Enter your email"
                 required
               />
             </div>
 
             <div>
-              <label htmlFor="password" className="block text-sm font-semibold text-orange-800 mb-2">
+              <label htmlFor="password" className="block text-sm font-semibold text-foreground mb-2">
                 Password
               </label>
               <div className="relative">
@@ -85,14 +85,14 @@ export default function SignInPage() {
                   type={showPassword ? 'text' : 'password'}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="w-full px-4 py-3 border border-orange-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent text-orange-900 bg-white placeholder-orange-400 pr-12 font-medium"
+                  className="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-foreground bg-input placeholder-muted-foreground pr-12 font-medium"
                   placeholder="Enter your password"
                   required
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-orange-600 hover:text-orange-800"
+                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-muted-foreground hover:text-foreground"
                 >
                   {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                 </button>
@@ -101,10 +101,10 @@ export default function SignInPage() {
 
             <div className="flex items-center justify-between">
               <label className="flex items-center">
-                <input type="checkbox" className="w-4 h-4 text-orange-600 border-orange-300 rounded focus:ring-orange-500" />
-                <span className="ml-2 text-sm text-orange-600">Remember me</span>
+                <input type="checkbox" className="w-4 h-4 text-primary border-border rounded focus:ring-primary" />
+                <span className="ml-2 text-sm text-foreground">Remember me</span>
               </label>
-              <Link href="/auth/forgot-password" className="text-sm text-orange-600 hover:text-orange-500">
+              <Link href="/auth/forgot-password" className="text-sm text-muted-foreground hover:text-foreground">
                 Forgot password?
               </Link>
             </div>
@@ -119,23 +119,23 @@ export default function SignInPage() {
           </form>
 
           <div className="mt-6 text-center">
-            <p className="text-orange-600">
+            <p className="text-muted-foreground">
               Don't have an account?{' '}
-              <Link href="/auth/signup" className="text-orange-600 hover:text-orange-500 font-medium">
+              <Link href="/auth/signup" className="text-primary hover:text-primary/80 font-medium">
                 Sign up
               </Link>
             </p>
           </div>
 
-          {/* Divider */}
-          <div className="my-6 flex items-center">
-            <div className="flex-1 border-t border-orange-300"></div>
-            <span className="px-4 text-sm text-orange-500">Or continue with</span>
-            <div className="flex-1 border-t border-orange-300"></div>
+           {/* Divider */}
+           <div className="my-6 flex items-center">
+            <div className="flex-1 border-t border-border"></div>
+            <span className="px-4 text-sm text-muted-foreground">Or continue with</span>
+            <div className="flex-1 border-t border-border"></div>
           </div>
 
-          {/* Social Login */}
-          <div className="space-y-3">
+           {/* Social Login */}
+           <div className="space-y-3">
             <Button variant="outline" className="w-full py-3" onClick={() => alert('Google sign-in coming soon!')}>
               <svg className="w-5 h-5 mr-2" viewBox="0 0 24 24">
                 <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>

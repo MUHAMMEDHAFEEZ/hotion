@@ -115,14 +115,14 @@ export function Editor({
         attributes: {
           class: cn(
             'prose prose-sm sm:prose lg:prose-lg xl:prose-2xl mx-auto focus:outline-none',
-            'prose-headings:font-bold prose-headings:text-orange-900',
-            'prose-p:text-orange-700 prose-p:leading-relaxed',
-            'prose-a:text-orange-600 prose-a:no-underline hover:prose-a:underline',
-            'prose-blockquote:border-l-orange-500 prose-blockquote:bg-orange-50 prose-blockquote:p-4',
-            'prose-code:bg-orange-100 prose-code:px-1 prose-code:py-0.5 prose-code:rounded',
-            'prose-pre:bg-orange-900 prose-pre:text-orange-100',
+            'prose-headings:font-bold prose-headings:text-foreground',
+            'prose-p:text-muted-foreground prose-p:leading-relaxed',
+            'prose-a:text-primary prose-a:no-underline hover:prose-a:underline',
+            'prose-blockquote:border-l-primary prose-blockquote:bg-accent prose-blockquote:p-4',
+            'prose-code:bg-muted prose-code:px-1 prose-code:py-0.5 prose-code:rounded',
+            'prose-pre:bg-secondary prose-pre:text-secondary-foreground',
             'prose-ul:list-disc prose-ol:list-decimal',
-            'prose-li:marker:text-orange-400',
+            'prose-li:marker:text-muted-foreground',
             'max-w-none'
           ),
         },
@@ -134,24 +134,24 @@ export function Editor({
     isActive = false, 
     disabled = false, 
     children 
-  }: {
-    onClick: () => void
-    isActive?: boolean
-    disabled?: boolean
-    children: React.ReactNode
-  }) => (
-    <Button
-      variant={isActive ? "default" : "ghost"}
-      size="sm"
-      onClick={onClick}
-      disabled={disabled}
-      className={cn(
+ } : { 
+   onClick: () => void 
+   isActive?: boolean 
+   disabled?: boolean 
+   children: React.ReactNode 
+ }) => (
+   <Button
+     variant={isActive ? "default" : "ghost"}
+     size="sm"
+     onClick={onClick}
+     disabled={disabled}
+     className={cn(
         "h-8 w-8 p-0",
-        isActive && "bg-orange-100 text-orange-700 hover:bg-orange-200"
-      )}
-    >
-      {children}
-    </Button>
+        isActive && "bg-accent text-accent-foreground hover:bg-accent/90"
+     )}
+   >
+     {children}
+   </Button>
   )
 
   const BlockMenu = () => {
@@ -170,13 +170,13 @@ export function Editor({
 
     return (
       <div className="absolute left-0 top-8 z-10 bg-white dark:bg-gray-800 border border-orange-200 dark:border-gray-700 rounded-lg shadow-lg p-2 min-w-48">
-        <div className="text-xs font-medium text-orange-600 dark:text-gray-400 mb-2 px-2">
+        <div className="text-xs font-medium text-foreground mb-2 px-2">
           Turn into
         </div>
         {blockTypes.map((block) => (
           <button
             key={block.type}
-            className="w-full flex items-center space-x-2 px-2 py-1.5 text-sm hover:bg-orange-100 dark:hover:bg-gray-700 rounded"
+            className="w-full flex items-center space-x-2 px-2 py-1.5 text-sm hover:bg-accent dark:hover:bg-accent rounded"
             onClick={() => {
               if (block.type === 'table') {
                 editor?.chain().focus().insertTable({ rows: 3, cols: 3, withHeaderRow: true }).run()

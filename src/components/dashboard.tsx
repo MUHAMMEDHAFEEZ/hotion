@@ -97,7 +97,7 @@ export function Dashboard() {
       <div>
         <div
           className={cn(
-            "flex items-center justify-between px-2 py-1.5 rounded-md cursor-pointer hover:bg-orange-100 dark:hover:bg-gray-700 transition-colors",
+            "flex items-center justify-between px-2 py-1.5 rounded-md cursor-pointer hover:bg-accent dark:hover:bg-accent transition-colors",
             level > 0 && "ml-4"
           )}
           onClick={() => {
@@ -108,16 +108,16 @@ export function Dashboard() {
         >
           <div className="flex items-center space-x-2">
             {item.children && (
-              <button className="p-0.5 hover:bg-gray-200 dark:hover:bg-gray-600 rounded">
+              <button className="p-0.5 hover:bg-accent dark:hover:bg-accent rounded transition-colors">
                 {isExpanded ? (
-                  <ChevronDown className="w-3 h-3" />
+                  <ChevronDown className="w-3 h-3 text-foreground" />
                 ) : (
-                  <ChevronRight className="w-3 h-3" />
+                  <ChevronRight className="w-3 h-3 text-foreground" />
                 )}
               </button>
             )}
             {item.icon}
-            <span className="text-sm font-medium">{item.title}</span>
+            <span className="text-sm font-medium text-foreground">{item.title}</span>
           </div>
           {level === 0 && (
             <Button variant="ghost" size="icon" className="w-6 h-6 opacity-0 group-hover:opacity-100">
@@ -146,7 +146,7 @@ export function Dashboard() {
   }
 
   return (
-    <div className="h-screen flex bg-gray-50 dark:bg-gray-900">
+    <div className="h-screen flex bg-background dark:bg-background">
       {/* Sidebar */}
       <AnimatePresence>
         {sidebarOpen && (
@@ -155,16 +155,16 @@ export function Dashboard() {
             animate={{ width: 280, opacity: 1 }}
             exit={{ width: 0, opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="bg-white dark:bg-gray-800 border-r border-orange-200 dark:border-gray-700 flex flex-col overflow-hidden"
+            className="bg-background dark:bg-background border-r border-border dark:border-border flex flex-col overflow-hidden"
           >
             {/* Sidebar Header */}
-            <div className="p-4 border-b border-orange-200 dark:border-gray-700">
+            <div className="p-4 border-b border-border dark:border-border">
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-2">
-                  <div className="w-8 h-8 bg-gradient-to-r from-orange-500 to-orange-600 rounded-lg flex items-center justify-center">
-                    <span className="text-white font-bold text-lg">H</span>
+                  <div className="w-8 h-8 bg-gradient-to-r from-primary to-primary/90 rounded-lg flex items-center justify-center">
+                    <span className="text-primary-foreground font-bold text-lg">H</span>
                   </div>
-                  <span className="text-lg font-semibold">Hotion</span>
+                  <span className="text-lg font-semibold text-foreground">Hotion</span>
                 </div>
                 <Button
                   variant="ghost"
@@ -178,13 +178,13 @@ export function Dashboard() {
               
               {/* Search */}
               <div className="mt-4 relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-orange-400 w-4 h-4" />
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
                 <input
                   type="text"
                   placeholder="Search..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-10 pr-4 py-2 border border-orange-200 dark:border-gray-600 rounded-lg bg-orange-50 dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                  className="w-full pl-10 pr-4 py-2 border border-border dark:border-border rounded-lg bg-input dark:bg-input text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary transition-all duration-200"
                 />
               </div>
             </div>
@@ -200,7 +200,7 @@ export function Dashboard() {
               </div>
 
               {/* Quick Actions */}
-              <div className="pt-4 border-t border-orange-200 dark:border-gray-700">
+              <div className="pt-4 border-t border-border dark:border-border">
                 <Button className="w-full justify-start" variant="ghost">
                   <Plus className="w-4 h-4 mr-2" />
                   New Page
@@ -213,15 +213,15 @@ export function Dashboard() {
             </nav>
 
             {/* Sidebar Footer */}
-            <div className="p-4 border-t border-orange-200 dark:border-gray-700">
+            <div className="p-4 border-t border-border dark:border-border">
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-2">
-                  <div className="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center">
-                    <span className="text-sm font-medium">JD</span>
+                  <div className="w-8 h-8 bg-secondary rounded-full flex items-center justify-center">
+                    <span className="text-sm font-medium text-secondary-foreground">JD</span>
                   </div>
                   <div>
-                    <div className="text-sm font-medium">John Doe</div>
-                    <div className="text-xs text-gray-500">john@example.com</div>
+                    <div className="text-sm font-medium text-foreground">John Doe</div>
+                    <div className="text-xs text-muted-foreground">john@example.com</div>
                   </div>
                 </div>
                 <Button variant="ghost" size="icon">
@@ -236,7 +236,7 @@ export function Dashboard() {
       {/* Main Content */}
       <div className="flex-1 flex flex-col min-w-0">
         {/* Header */}
-        <header className="bg-white dark:bg-gray-800 border-b border-orange-200 dark:border-gray-700 px-6 py-4">
+        <header className="bg-background dark:bg-background border-b border-border dark:border-border px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
               {!sidebarOpen && (
@@ -249,7 +249,7 @@ export function Dashboard() {
                 </Button>
               )}
               <div className="flex items-center space-x-2">
-                <h1 className="text-xl font-semibold">Dashboard</h1>
+                <h1 className="text-xl font-semibold text-foreground">Dashboard</h1>
               </div>
             </div>
             
@@ -272,10 +272,10 @@ export function Dashboard() {
           <div className="max-w-4xl mx-auto space-y-8">
             {/* Welcome Section */}
             <div className="text-center py-12">
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+              <h2 className="text-3xl font-bold text-foreground mb-4">
                 Welcome to your workspace
               </h2>
-              <p className="text-gray-600 dark:text-gray-300 mb-8">
+              <p className="text-muted-foreground mb-8">
                 Start creating amazing content with our powerful tools
               </p>
               
@@ -294,7 +294,7 @@ export function Dashboard() {
             {/* Recent Pages */}
             <div>
               <div className="flex items-center justify-between mb-4">
-                <h3 className="text-lg font-semibold">Recent Pages</h3>
+                <h3 className="text-lg font-semibold text-foreground">Recent Pages</h3>
                 <Button variant="ghost" size="sm">
                   View all
                 </Button>
@@ -305,24 +305,24 @@ export function Dashboard() {
                   <motion.div
                     key={page.id}
                     whileHover={{ scale: 1.02 }}
-                    className="p-4 bg-white dark:bg-gray-800 rounded-lg border border-orange-200 dark:border-gray-700 hover:border-orange-300 dark:hover:border-orange-600 transition-colors cursor-pointer"
+                    className="p-4 bg-card dark:bg-card rounded-lg border border-border dark:border-border hover:border-primary dark:hover:border-primary transition-colors cursor-pointer"
                     onClick={() => setSelectedPage(page.id)}
                   >
                     <div className="flex items-start justify-between mb-2">
                       <div className="flex items-center space-x-2">
                         <span className="text-lg">{page.icon}</span>
-                        <h4 className="font-medium truncate">{page.title}</h4>
+                        <h4 className="font-medium truncate text-foreground">{page.title}</h4>
                       </div>
                       <div className="flex items-center space-x-1">
                         {page.isFavorite && (
-                          <Star className="w-4 h-4 text-yellow-400 fill-current" />
+                          <Star className="w-4 h-4 text-primary fill-current" />
                         )}
                         <Button variant="ghost" size="icon" className="w-6 h-6">
                           <MoreHorizontal className="w-3 h-3" />
                         </Button>
                       </div>
                     </div>
-                    <p className="text-sm text-gray-500 dark:text-gray-400">
+                    <p className="text-sm text-muted-foreground">
                       Modified {page.lastModified.toLocaleDateString()}
                     </p>
                   </motion.div>
@@ -332,23 +332,23 @@ export function Dashboard() {
 
             {/* Quick Actions */}
             <div>
-              <h3 className="text-lg font-semibold mb-4">Quick Actions</h3>
+              <h3 className="text-lg font-semibold mb-4 text-foreground">Quick Actions</h3>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                 <Button variant="outline" className="h-20 flex-col space-y-2">
                   <FileText className="w-6 h-6" />
-                  <span>New Page</span>
+                  <span className="text-foreground">New Page</span>
                 </Button>
                 <Button variant="outline" className="h-20 flex-col space-y-2">
                   <Database className="w-6 h-6" />
-                  <span>Database</span>
+                  <span className="text-foreground">Database</span>
                 </Button>
                 <Button variant="outline" className="h-20 flex-col space-y-2">
                   <Calendar className="w-6 h-6" />
-                  <span>Calendar</span>
+                  <span className="text-foreground">Calendar</span>
                 </Button>
                 <Button variant="outline" className="h-20 flex-col space-y-2">
                   <Users className="w-6 h-6" />
-                  <span>Collaborate</span>
+                  <span className="text-foreground">Collaborate</span>
                 </Button>
               </div>
             </div>
